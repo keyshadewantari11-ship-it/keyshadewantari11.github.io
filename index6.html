@@ -1,0 +1,961 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bhachoc - Pisang Coklat Lumer Renyah</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            line-height: 1.6;
+            color: #333;
+            background-color: #F8F4E3; /* Warna krem yang lebih elegan */
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: #2D582A; /* Hijau botol */
+            color: white;
+            padding: 12px 25px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: #1A3E18; /* Hijau yang lebih gelap */
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid #2D582A;
+            color: #2D582A;
+        }
+
+        .btn-outline:hover {
+            background-color: #2D582A;
+            color: white;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-size: 2.2rem;
+            color: #2D582A; /* Hijau botol */
+            margin-bottom: 15px;
+        }
+
+        .section-title p {
+            color: #777;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: #F8F4E3;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #2D582A;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo i {
+            margin-right: 10px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 30px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #2D582A;
+        }
+
+        .cart-icon {
+            position: relative;
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            background-color: #E2B24C; /* Warna emas */
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #2D582A 0%, #4D7A4B 100%); /* Gradasi hijau */
+            color: white;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+
+        /* Products Section */
+        .products {
+            padding: 80px 0;
+            background-color: #fff;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .product-card {
+            background-color: #F8F4E3;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+        }
+
+        /* Adjusted for images */
+        .product-img {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .product-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            display: block;
+        }
+
+        .product-info {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .product-info h3 {
+            margin-bottom: 10px;
+            color: #2D582A;
+        }
+
+        .price {
+            font-size: 1.2rem;
+            color: #2D582A;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+
+        .quantity {
+            display: flex;
+            justify-content: center;
+            margin: 15px 0;
+        }
+
+        .quantity button {
+            background-color: #ddd;
+            border: none;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .quantity button:hover {
+            background-color: #ccc;
+        }
+
+        .quantity input {
+            width: 40px;
+            text-align: center;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin: 0 10px;
+        }
+
+        /* Cart Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 600px;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .close {
+            font-size: 24px;
+            cursor: pointer;
+            color: #777;
+        }
+
+        .cart-items {
+            margin-bottom: 20px;
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .cart-item-info {
+            flex: 1;
+        }
+
+        .cart-item-name {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .cart-item-price {
+            color: #2D582A;
+            font-weight: bold;
+        }
+        
+        .cart-item-total {
+            font-weight: bold;
+            color: #E2B24C;
+            margin-left: 15px;
+        }
+
+        .cart-item-quantity {
+            display: flex;
+            align-items: center;
+        }
+
+        .cart-item-quantity button {
+            background-color: #eee;
+            border: none;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        .cart-item-quantity input {
+            width: 40px;
+            text-align: center;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin: 0 10px;
+        }
+
+        .cart-item-remove {
+            color: #ff4d4d;
+            cursor: pointer;
+            margin-left: 15px;
+        }
+
+        .cart-total {
+            display: flex;
+            justify-content: space-between;
+            font-weight: bold;
+            font-size: 1.2rem;
+            padding: 15px 0;
+            border-top: 2px solid #eee;
+        }
+
+        .cart-actions {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        /* About Section */
+        .about {
+            padding: 80px 0;
+            background-color: #F8F4E3;
+        }
+
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        /* Adjusted for images */
+        .about-image {
+            flex: 1;
+            height: 300px;
+            overflow: hidden;
+            border-radius: 10px;
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            padding: 80px 0;
+            background-color: #fff;
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .testimonial-card {
+            background-color: #F8F4E3;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .testimonial-text:before {
+            content: "\201C";
+            font-size: 3rem;
+            color: #E2B24C;
+            position: absolute;
+            top: -20px;
+            left: -10px;
+            opacity: 0.2;
+        }
+
+        .testimonial-author {
+            font-weight: bold;
+            color: #2D582A;
+        }
+
+        .rating {
+            color: #E2B24C;
+            margin: 10px 0;
+        }
+
+        /* Hours & Location */
+        .hours-location {
+            padding: 80px 0;
+            background-color: #F8F4E3;
+        }
+
+        .info-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .info-card {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            text-align: center;
+        }
+
+        .info-card i {
+            font-size: 2.5rem;
+            color: #2D582A;
+            margin-bottom: 20px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #2D582A;
+            color: #fff;
+            padding: 50px 0 20px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-section a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: #E2B24C;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-links a {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
+            transition: background-color 0.3s;
+        }
+
+        .social-links a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+            }
+            
+            .nav-links {
+                margin-top: 20px;
+            }
+            
+            .nav-links li {
+                margin: 0 10px;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .about-content {
+                flex-direction: column;
+            }
+            
+            .cart-actions {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .cart-actions .btn {
+                width: 100%;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">
+                    <i class="fas fa-carrot"></i>
+                    <span>Bhachoc</span>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="#home">Beranda</a></li>
+                    <li><a href="#products">Produk</a></li>
+                    <li><a href="#about">Tentang</a></li>
+                    <li><a href="#testimonials">Testimoni</a></li>
+                    <li><a href="#contact">Kontak</a></li>
+                    <li class="cart-icon">
+                        <a href="#" id="cart-button">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span class="cart-count">0</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero" id="home">
+        <div class="container">
+            <h1>Bhachoc - Pisang Coklat Lumer</h1>
+            <p>Pisang dengan coklat lumer dengan sensasi renyah di luar, lumer di dalam. Nikmati kelezatan yang menggugah selera!</p>
+            <a href="#products" class="btn">Pesan Sekarang</a>
+        </div>
+    </section>
+
+    <section class="products" id="products">
+        <div class="container">
+            <div class="section-title">
+                <h2>Menu Andalan Kami</h2>
+                <p>Pilih varian Bhachoc favorit Anda</p>
+            </div>
+            <div class="product-grid">
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="Bhachoc-Esha/bhachoc original.JPG" alt="Bhachoc Original">
+                    </div>
+                    <div class="product-info">
+                        <h3>Bhachoc Original</h3>
+                        <p>Pisang coklat lumer </p>
+                        <div class="price">Rp 15.000</div>
+                        <div class="quantity">
+                            <button onclick="decreaseQuantity(0)">-</button>
+                            <input type="number" id="qty0" value="1" min="1">
+                            <button onclick="increaseQuantity(0)">+</button>
+                        </div>
+                        <a href="#" class="btn" onclick="addToCart(0)">Tambah ke Keranjang</a>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="Bhachoc-Esha/bhachoc keju.JPG" alt="Bhachoc Keju">
+                    </div>
+                    <div class="product-info">
+                        <h3>Bhachoc Keju</h3>
+                        <p>Pisang coklat dengan taburan keju extra yang melimpah</p>
+                        <div class="price">Rp 18.000</div>
+                        <div class="quantity">
+                            <button onclick="decreaseQuantity(1)">-</button>
+                            <input type="number" id="qty1" value="1" min="1">
+                            <button onclick="increaseQuantity(1)">+</button>
+                        </div>
+                        <a href="#" class="btn" onclick="addToCart(1)">Tambah ke Keranjang</a>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="Bhachoc-Esha/bhachoc matcha.JPG" alt="Bhachoc Matcha">
+                    </div>
+                    <div class="product-info">
+                        <h3>Bhachoc Matcha</h3>
+                        <p>Pisang coklat dengan varian matcha yang nikmat</p>
+                        <div class="price">Rp 17.000</div>
+                        <div class="quantity">
+                            <button onclick="decreaseQuantity(2)">-</button>
+                            <input type="number" id="qty2" value="1" min="1">
+                            <button onclick="increaseQuantity(2)">+</button>
+                        </div>
+                        <a href="#" class="btn" onclick="addToCart(2)">Tambah ke Keranjang</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="modal" id="cart-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Keranjang Belanja</h2>
+                <span class="close">&times;</span>
+            </div>
+            <div class="cart-items" id="cart-items">
+                <p id="empty-cart-message">Keranjang belanja Anda masih kosong.</p>
+            </div>
+            <div class="cart-total">
+                <span>Total:</span>
+                <span id="cart-total">Rp 0</span>
+            </div>
+            <div class="cart-actions">
+                <a href="#" class="btn btn-outline" id="continue-shopping">Lanjut Belanja</a>
+                <a href="#" class="btn" id="checkout-button">Checkout</a>
+            </div>
+        </div>
+    </div>
+
+    <section class="about" id="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>Tentang Bhachoc</h2>
+                <p>Kenali lebih dekat produk kami</p>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>Bhachoc adalah inovasi terbaru dari Saung Teh Esha yang memadukan pisang segar dengan coklat lumer berkualitas tinggi. Dibuat dengan bahan-bahan pilihan dan diolah dengan teknik khusus sehingga menghasilkan tekstur renyah di luar namun lumer di dalam.</p>
+                    <br>
+                    <p>Setiap gigitan memberikan pengalaman rasa yang tak terlupakan. Cocok untuk dinikmati kapan saja, baik sebagai camilan sehari-hari maupun hidangan penutup yang spesial.</p>
+                    <br>
+                    <a href="#" class="btn">Selengkapnya</a>
+                </div>
+                <div class="about-image">
+                    <img src="Bhachoc-Esha/about bhachoc.PNG" alt="About Bhachoc">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <div class="section-title">
+                <h2>Apa Kata Pelanggan Kami?</h2>
+                <p>Testimoni dari pelanggan yang telah menikmati Bhachoc</p>
+            </div>
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <div class="rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">"Rasanya luar biasa! Perpaduan pisang dan coklatnya pas banget. Renyah di luar, lumer di dalam. Bikin ketagihan!"</p>
+                    <p class="testimonial-author">- Rina, Bandung</p>
+                </div>
+                <div class="testimonial-card">
+                    <div class="rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">"Bhachoc ini jadi camilan favorit keluarga. Anak-anak suka banget. Harganya juga terjangkau untuk kualitas premium."</p>
+                    <p class="testimonial-author">- Budi, Jakarta</p>
+                </div>
+                <div class="testimonial-card">
+                    <div class="rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                    <p class="testimonial-text">"Coklatnya benar-benar lumer dan pisangnya segar. Pelayanannya juga cepat. Recommended banget!"</p>
+                    <p class="testimonial-author">- Sari, Bogor</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="hours-location" id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Jam Operasional & Lokasi</h2>
+                <p>Kunjungi kami atau pesan secara online</p>
+            </div>
+            <div class="info-cards">
+                <div class="info-card">
+                    <i class="fas fa-clock"></i>
+                    <h3>Jam Operasional</h3>
+                    <p>Setiap Hari</p>
+                    <p>10.00 - 20.00 WIB</p>
+                </div>
+                <div class="info-card">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <h3>Lokasi</h3>
+                    <p>Saung Teh Esha</p>
+                    <p>Jl. Cisumdawu, Soekarno Hatta</p>
+                </div>
+                <div class="info-card">
+                    <i class="fas fa-phone"></i>
+                    <h3>Kontak</h3>
+                    <p>+62-812-2842-1615</p>
+                    <p>saung_teteh12</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Bhachoc</h3>
+                    <p>Pisang coklat lumer dengan sensasi renyah di luar, lumer di dalam.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Link Cepat</h3>
+                    <ul>
+                        <li><a href="#home">Beranda</a></li>
+                        <li><a href="#products">Produk</a></li>
+                        <li><a href="#about">Tentang</a></li>
+                        <li><a href="#contact">Kontak</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Kontak</h3>
+                    <ul>
+                        <li><i class="fas fa-phone"></i> +62-812-2842-1615</li>
+                        <li><i class="fas fa-envelope"></i> info@bhachoc.com</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Saung Teh Esha</li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Follow Kami</h3>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 Bhachoc. Semua hak dilindungi.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Data produk
+        const products = [
+            { id: 0, name: "Bhachoc Original", price: 15000 },
+            { id: 1, name: "Bhachoc Keju", price: 18000 },
+            { id: 2, name: "Bhachoc Matcha", price: 17000 }
+        ];
+
+        // Keranjang belanja
+        let cart = [];
+
+        // Elemen DOM
+        const cartButton = document.getElementById('cart-button');
+        const cartModal = document.getElementById('cart-modal');
+        const closeButton = document.querySelector('.close');
+        const continueShoppingButton = document.getElementById('continue-shopping');
+        const checkoutButton = document.getElementById('checkout-button');
+        const cartItemsContainer = document.getElementById('cart-items');
+        const emptyCartMessage = document.getElementById('empty-cart-message');
+        const cartTotalElement = document.getElementById('cart-total');
+        const cartCountElement = document.querySelector('.cart-count');
+
+        // Fungsi untuk menambah jumlah produk di halaman utama
+        function increaseQuantity(productId) {
+            const qtyInput = document.getElementById('qty' + productId);
+            qtyInput.value = parseInt(qtyInput.value) + 1;
+        }
+
+        // Fungsi untuk mengurangi jumlah produk di halaman utama
+        function decreaseQuantity(productId) {
+            const qtyInput = document.getElementById('qty' + productId);
+            if (parseInt(qtyInput.value) > 1) {
+                qtyInput.value = parseInt(qtyInput.value) - 1;
+            }
+        }
+        
+        // Fungsi untuk menambah produk ke keranjang
+        function addToCart(productId) {
+            const product = products.find(p => p.id === productId);
+            if (!product) return;
+            
+            const qtyInput = document.getElementById('qty' + productId);
+            const quantity = parseInt(qtyInput.value);
+            
+            const existingItem = cart.find(item => item.id === productId);
+            
+            if (existingItem) {
+                existingItem.quantity += quantity;
+            } else {
+                cart.push({ ...product, quantity: quantity });
+            }
+            
+            updateCartIcon();
+            updateCartDisplay();
+            alert(`${quantity} ${product.name} telah ditambahkan ke keranjang!`);
+            qtyInput.value = 1; // Reset input setelah menambah
+        }
+
+        // Fungsi untuk menghapus item dari keranjang
+        function removeFromCart(productId) {
+            cart = cart.filter(item => item.id !== productId);
+            updateCartIcon();
+            updateCartDisplay();
+        }
+
+        // Fungsi untuk mengubah jumlah item di keranjang
+        function updateCartItemQuantity(productId, newQuantity) {
+            const item = cart.find(item => item.id === productId);
+            if (item && newQuantity > 0) {
+                item.quantity = newQuantity;
+            } else if (newQuantity <= 0) {
+                removeFromCart(productId);
+            }
+            updateCartIcon();
+            updateCartDisplay();
+        }
+
+        // Fungsi untuk menampilkan keranjang
+        function updateCartDisplay() {
+            cartItemsContainer.innerHTML = '';
+            
+            if (cart.length === 0) {
+                emptyCartMessage.style.display = 'block';
+                cartTotalElement.textContent = 'Rp 0';
+                return;
+            }
+            
+            emptyCartMessage.style.display = 'none';
+            
+            let total = 0;
+            
+            cart.forEach(item => {
+                const itemTotal = item.price * item.quantity;
+                total += itemTotal;
+                
+                const cartItemElement = document.createElement('div');
+                cartItemElement.className = 'cart-item';
+                cartItemElement.innerHTML = `
+                    <div class="cart-item-info">
+                        <div class="cart-item-name">${item.name}</div>
+                        <div class="cart-item-price">Rp ${item.price.toLocaleString('id-ID')}</div>
+                    </div>
+                    <div class="cart-item-quantity">
+                        <button onclick="updateCartItemQuantity(${item.id}, ${item.quantity - 1})">-</button>
+                        <input type="number" value="${item.quantity}" min="1" onchange="updateCartItemQuantity(${item.id}, parseInt(this.value))">
+                        <button onclick="updateCartItemQuantity(${item.id}, ${item.quantity + 1})">+</button>
+                    </div>
+                    <div class="cart-item-total">Rp ${itemTotal.toLocaleString('id-ID')}</div>
+                    <div class="cart-item-remove" onclick="removeFromCart(${item.id})">
+                        <i class="fas fa-trash"></i>
+                    </div>
+                `;
+                
+                cartItemsContainer.appendChild(cartItemElement);
+            });
+            
+            cartTotalElement.textContent = 'Rp ' + total.toLocaleString('id-ID');
+        }
+
+        // Fungsi untuk update jumlah item di ikon keranjang
+        function updateCartIcon() {
+            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+            cartCountElement.textContent = totalItems;
+        }
+
+        // Event listeners untuk modal keranjang
+        cartButton.onclick = () => {
+            cartModal.style.display = 'flex';
+            updateCartDisplay();
+        };
+
+        closeButton.onclick = () => {
+            cartModal.style.display = 'none';
+        };
+
+        window.onclick = (event) => {
+            if (event.target == cartModal) {
+                cartModal.style.display = 'none';
+            }
+        };
+
+        continueShoppingButton.onclick = () => {
+            cartModal.style.display = 'none';
+        };
+
+        checkoutButton.onclick = () => {
+            if (cart.length > 0) {
+                alert('Terima kasih! Pesanan Anda sedang diproses.');
+                cart = [];
+                updateCartIcon();
+                updateCartDisplay();
+                cartModal.style.display = 'none';
+            } else {
+                alert('Keranjang Anda masih kosong. Silakan tambahkan produk terlebih dahulu.');
+            }
+        };
+    </script>
+</body>
+</html>
